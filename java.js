@@ -5,6 +5,28 @@ let Desc = document.getElementById("desc");
 let Display =document.getElementById("display")
 let items= 1;
 
+for(let i =1;i<20;i++){
+ if(localStorage.getItem(`TODO-${i}`)){
+  let data = localStorage.getItem(`TODO-${i}`);
+  let info = JSON.parse(data)
+  let title = info[0];
+  let desc = info[1];
+  console.log(title,desc);
+    Display.innerHTML+=`
+    <div class="card mx-4 my-4" style="width: 20rem;" id="${i}">
+          <div class="card-body">
+            <h5 class="card-title" >TODO-${i}</h5>
+            <h5 class="card-title" >${title}</h5>
+            <p class="card-text id ">${desc}</p>
+           <div id="Delete${i}" class="btn btn-danger ">Delete</div>
+          </div>
+        </div>
+    `
+  }
+}
+
+
+
 
 Submit.addEventListener("click",(e)=>{
   e.preventDefault();
